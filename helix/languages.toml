@@ -1,0 +1,33 @@
+[language-server.ucm]
+command = "ncat"
+args = ["localhost", "5757"]
+
+[[language]]
+name = "unison"
+language-servers = [ "ucm" ]
+
+[language-server.ltex-ls.config]
+ltex.disabledRules = { "en-US" = ["PROFANITY"], "en-GB" = ["PROFANITY"] }
+ltex.dictionary = { "en-US" = ["builtin"], "en-GB" = ["builtin"] }
+
+
+# [language-server.pylsp.config.pylsp]
+# pulgins.ruff.enabled = true
+# pulgins.black.enabled = true
+
+[[language]]
+name = "markdown"
+language-servers = [ "marksman", "ltex-ls" ]
+
+[language-server.omnisharp]
+command = "omnisharp"
+
+[[language]]
+name = "c-sharp"
+scope = "source.cs"
+file-types = ["cs"]
+roots = ["sln", "csproj", ".git"]
+language-servers = ["omnisharp"]
+formatter = { command = "dotnet", args = ["csharpier"] }
+auto-format = true
+
